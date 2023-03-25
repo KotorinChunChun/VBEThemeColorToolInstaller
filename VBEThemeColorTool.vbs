@@ -2,7 +2,7 @@ Rem 本スクリプトはvbetctool.exeをタスクスケジューラから自動的に実行できるように
 Rem 使用中のパソコンにインストール/アンインストールします。
 Rem
 Rem フォルダ構成
-Rem - VBEThemeColorTool.vbs     ちゅん氏が開発したインストーラ兼タスクスケジューラ呼び出し用の本vbsファイルです。
+Rem - VBEThemeColorTool.vbs     ちゅんが開発したインストーラ兼タスクスケジューラ呼び出し用のvbsファイルです。
 Rem - vbetctool.exe             風柳氏が開発したVBE7.dllの書き換えプログラム本体です。
 Rem - VBEThemeColorEditor.exe   例のxml作成用ツールです。VBE7.dllの書き換えには使いません。
 Rem - Themes\*.xml              VBEThemeColorEditor.exeで作成した変更テーマのxmlを保存するところです。
@@ -112,9 +112,6 @@ Sub Install()
     
     Dim VbsInstalledFolder: VbsInstalledFolder = GetPath_AppInstallFolder()
     Dim VbsInstalledFullName: VbsInstalledFullName = VbsInstalledFolder & GetPath_VbsFileName
-    
-    Rem Excelのオプションの変更
-    'wsShell.RegWrite "HKCU\Software\Microsoft\Office\16.0\Excel\Options\Font", "ＭＳ Ｐゴシック,11", "REG_SZ"
 
     Rem ファイル事前準備
     Dim fl
@@ -138,7 +135,8 @@ Sub Install()
     ss = Replace(ss, "[PARAM_TEXT]", "\""" & VbsInstalledFullName & "\"" \""" & SW & "\""")
     wsShell.Run ss, 0, True
     
-    MsgBox ss
+    Rem デバッグ用：タスクスケジューラに登録するときのコマンド
+    ' MsgBox ss
     
     Rem schtasks /create /tn AUTO_BUILD /tr c:\test.vbs /sc minute /mo 1
 '    Const CmdTemplate = "schtasks /create /tn [TASK_NAME] /tr \""""[EXE_PATH][PARAM_TEXT]\"""" /sc minute /mo 1 /rl highest /F"
@@ -153,19 +151,8 @@ Sub Install()
     
     Rem とりあえず今すぐ1回実行しておく
     Rem 作成直後は実行されないらしいので遅延させる。
-    'WScript.Sleep 1000
-    'wsShell.exec "schtasks /run /tn " & APP_NAME & ""
-    
-
-    'Rem 新規作成のレジストリ追加
-    'wsShell.RegWrite "HKCR\.xlsm\Excel.SheetMacroEnabled.12\ShellNew\FileName", PATH_NEW & "EXCEL12.XLSM", "REG_SZ"
-    'Rem 下記は効果なし。 Excel.Sheet.8はxls_auto_fileの定義がないからだと思われる
-    'Rem REG ADD "HKEY_CLASSES_ROOT\.xls\Excel.Sheet.8\ShellNew" /v "FileName" /t REG_SZ /d "C:\Program Files (x86)\Microsoft Office\Root\VFS\Windows\ShellNew\EXCEL8.XLS" /f
-    'wsShell.RegWrite "HKCR\.xls\ShellNew\FileName", PATH_NEW & "EXCEL8.XLS", "REG_SZ"
-    'Rem [ファイルの種類]の定義。ココが空欄だとShellNewに登録してもメニューに増えない。
-    'wsShell.RegWrite "HKCU\Software\Classes\xls_auto_file", "Microsoft Excel 97-2003 互換ブック", "REG_SZ"
-    'Rem 既定値は\で終了
-    'wsShell.RegWrite "HKCR\xls_auto_file\", "Microsoft Excel 97-2003 互換ブック", "REG_SZ"
+    WScript.Sleep 1000
+    wsShell.exec "schtasks /run /tn " & APP_NAME & ""
     
     Rem 1つ目と2つ目にスタートに登録したいプログラムがある前提
     Call CreateShortcutInStartMenu(VbsInstalledFolder & GetInstallFiles()(0))
@@ -173,6 +160,11 @@ Sub Install()
 End Sub
 
 Sub Uninstall()
+
+    Select Case MsgBox("アンインストールすると自作されたテーマも全て消失します。削除しても大丈夫ですか？", vbYesNo, APP_NAME)
+        Case vbYes
+        Case vbNo: Exit Sub
+    End Select
 
     Rem 色を戻す
     Call VbetctoolSetDefaultColor
@@ -191,11 +183,6 @@ Sub Uninstall()
     Dim ss: ss = CmdTemplate
     ss = Replace(ss, "[TASK_NAME]", APP_NAME)
     wsShell.exec ss
-
-    Rem テンプレート「Book.xltx」の削除
-    Rem If fso.FileExists( fd & "\" & FnFile1) Then
-    Rem     fso.DeleteFile  fd & "\" & FnFile1
-    Rem End If
 
 End Sub
 
@@ -365,26 +352,28 @@ Function CopyFileEx(srcFp, destFp)
     End If
 End Function
 
-Rem 指定したフォルダの中身をすべて削除する。
+Rem 指定したフォルダと中身をすべて削除する。
 Sub DeleteFolderAndFiles(DirectoryPath)
     Dim objFolder: Set objFolder = fso.GetFolder(DirectoryPath)
     
     On Error Resume Next
-    ' サブフォルダを取得して再起呼び出し。
+    Rem サブフォルダを取得して再起呼び出し。
     Dim objSubFolder
     For Each objSubFolder In objFolder.SubFolders
         DeleteFolderAndFiles (DirectoryPath & "\" & objSubFolder.Name)
         fso.DeleteFolder DirectoryPath & "\" & objSubFolder.Name, True
     Next
 
-    ' フォルダ内のファイルを取得し、削除する。
+    Rem フォルダ内のファイルを取得し、削除する。
     Dim fileName
     For Each fileName In objFolder.Files
         fso.DeleteFile DirectoryPath & "\" & fileName.Name, True
     Next
+    
+    Rem 自フォルダを削除
+    fso.DeleteFolder DirectoryPath, True
 End Sub
 
 Rem----------------------------------------------------------------------------------------------------
 Rem ----------------------------------------------------------------------------------------------------
 Rem ----------------------------------------------------------------------------------------------------
-
