@@ -38,6 +38,13 @@ VBEThemeColorTool.vbsをメモ帳で開いて、ソースコード序盤の「�
 - xml作成のためのVBEThemeColorEditor.exe
 3. タスクスケジューラにVBEThemeColorToolを登録し1回実行します。
 
+![image](https://user-images.githubusercontent.com/55196383/227728762-3f9fbed5-8587-44fd-b854-b80be1401f4b.png)
+
+![image](https://user-images.githubusercontent.com/55196383/227728791-df3f947a-4bc7-47a8-b4a1-cccea1c7bf7d.png)
+
+![image](https://user-images.githubusercontent.com/55196383/227728820-745daebb-4549-46e0-aa7a-46430df1be83.png)
+
+
 # アンインストールを選んだときの処理内容
 
 1. `C:\Program Files\VBEThemeColorTool` フォルダを削除します。※自作テーマも消えます。注意してください。
