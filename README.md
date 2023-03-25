@@ -1,0 +1,2 @@
+# VBEThemeColorToolInstaller
+furyutei氏が開発したVBEThemeColorToolをタスクスケジューラに登録して実行し続けるインストーラです。
