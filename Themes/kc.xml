@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Description: MyCustom20220521 -->
+<VbeTheme name="MyCustom20220521" desc="MyCustom20220521">
+  <ThemeColors>
+    <Color colorID="1" HexColor="EEEEEE" />
+    <Color colorID="2" HexColor="AAAAAA" />
+    <Color colorID="3" HexColor="808080" />
+    <Color colorID="4" HexColor="282828" />
+    <Color colorID="5" HexColor="E51400" />
+    <Color colorID="6" HexColor="804040" />
+    <Color colorID="7" HexColor="FCFF88" />
+    <Color colorID="8" HexColor="B0AF4C" />
+    <Color colorID="9" HexColor="B5CEA8" />
+    <Color colorID="10" HexColor="608B4E" />
+    <Color colorID="11" HexColor="4EC9B0" />
+    <Color colorID="12" HexColor="417113" />
+    <Color colorID="13" HexColor="599CD4" />
+    <Color colorID="14" HexColor="FD7F96" />
+	<Color colorID="15" HexColor="D69D85" />
+	<Color colorID="16" HexColor="800080" />
+  </ThemeColors>
+</VbeTheme>
