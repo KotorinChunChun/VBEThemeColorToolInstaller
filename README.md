@@ -1,20 +1,23 @@
 # VBEThemeColorToolInstaller
 
 License: The MIT license
+
 Copyright (c) 2023 ことりちゅん(KotorinChunChun)
+
 動作確認環境: Windows 10 Pro／Excel for Microsoft 365 MSO （32 ビット／64ビット）
 
 
 
-# これは？
+## これは？
 
-[furyutei氏が開発したVBEThemeColorTool](https://github.com/furyutei/VBEThemeColorTool) をタスクスケジューラに登録して実行し続けるインストーラです。
+[furyutei氏が開発したVBEThemeColorTool](https://github.com/furyutei/VBEThemeColorTool) を、タスクスケジューラに登録して実行し続けるスクリプト兼インストーラです。
 
 パソコンの使用中にOfficeが更新されてVBE7.dllが差し替わったことにより、突然VBEの色が変化するのが嫌でタスクスケジューラから1分毎に更新し続けるようにしました。
+（多少不便でも良いなら大本のbatをスタートアップに登録したり、手動で実行することで事足ります。）
 
 ついでに必要なファイル一式をインストールする機能を搭載させました。
 
-# 使い方
+## 使い方
 
 VBEThemeColorTool.vbsをメモ帳で開いて、ソースコード序盤の「本スクリプトでカスタマイズが必要な箇所」のテーマ設定を自分のものに変えてください。
 既定値は作者が愛用するテーマの「kc.xml」です。↓イメージ
@@ -29,7 +32,7 @@ VBEThemeColorTool.vbsをメモ帳で開いて、ソースコード序盤の「�
 
 ※残念ながら再配布できないため、VBEThemeColorEditor.exe と vbetctool.exe はそれぞれから入手してください。
 
-# インストール時の処理内容
+## インストール時の処理内容
 
 1. `C:\Program Files\VBEThemeColorTool` に一式をコピーします。
 （Excelが32bitでインストールされている場合は、x86にインストールされます）
@@ -45,13 +48,15 @@ VBEThemeColorTool.vbsをメモ帳で開いて、ソースコード序盤の「�
 ![image](https://user-images.githubusercontent.com/55196383/227728820-745daebb-4549-46e0-aa7a-46430df1be83.png)
 
 
-# アンインストールを選んだときの処理内容
+## アンインストールを選んだときの処理内容
 
 1. `C:\Program Files\VBEThemeColorTool` フォルダを削除します。※自作テーマも消えます。注意してください。
 2. スタートメニューから2つを削除します。
 3. タスクスケジューラからVBEThemeColorToolを削除します。
 
-# 色変更を止めたい場合
+
+
+## 色変更を止めたい場合の手操作
 
 スタートメニューからVBEThemeColorTool.vbsを実行し、インストールを選択すると通常の色に戻すスケジュールに書き換わります。
 
