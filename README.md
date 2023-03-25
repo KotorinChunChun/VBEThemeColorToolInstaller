@@ -25,12 +25,12 @@ VBEThemeColorTool.vbsをメモ帳で開いて、ソースコード序盤の「�
 ![image](https://user-images.githubusercontent.com/55196383/227728255-9003d3fd-4399-4924-9576-91945c22e56a.png)
 
 以下のように保存してからvbsを実行することでインストール/アンインストールが始まります。
-- VBEThemeColorTool.vbs     ちゅんが新たに開発したインストーラ兼タスクスケジューラ呼び出し用のvbsファイルです。
-- vbetctool.exe             風柳氏が開発したVBE7.dllの書き換えプログラム本体です。
-- VBEThemeColorEditor.exe   例のxml作成用ツールです。VBE7.dllの書き換えには使いません。
-- Themes\*.xml              VBEThemeColorEditor.exeで作成した変更テーマのxmlを保存するところです。
+![image](https://user-images.githubusercontent.com/55196383/227729248-9ebbed79-c608-451f-b1d1-bbbea69320ad.png)
 
-※残念ながら再配布できないため、VBEThemeColorEditor.exe と vbetctool.exe はそれぞれから入手してください。
+※次の2つのファイルはそれぞれから入手して格納してください。
+
+- [VBEThemeColorEditor.exeはここから](https://github.com/gallaux/VBEThemeColorEditor)
+- [vbetctool.exeはここから](https://github.com/furyutei/VBEThemeColorTool/raw/master/dist/vbetctool.exe)
 
 ## インストール時の処理内容
 
