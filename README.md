@@ -57,3 +57,24 @@ VBEThemeColorTool.vbsをメモ帳で開いて、ソースコード序盤の「�
 
 手動でタスクスケジューラを起動しVBEThemeColorToolを削除すると1分毎に走るタスクも止められます。
 
+
+
+##  作者情報
+
+作者：ことりちゅん
+
+Twitter：[@KotorinChunChun](https://twitter.com/KotorinChunChun)
+
+ブログ：<[えくせるちゅんちゅん](https://www.excel-chunchun.com/)>
+
+[GitHubダウンロード](https://github.com/KotorinChunChun/VBEThemeColorToolInstaller/archive/master.zip)
+
+[GitHubリポジトリを閲覧](https://github.com/KotorinChunChun/VBEThemeColorToolInstaller)
+
+
+
+##  更新履歴
+
+| 日付     | 概要         |
+| -------- | ------------ |
+| 2023/3/26 | 初回リリース |
